@@ -15,6 +15,7 @@
 #pragma once
 
 
+
 class CPatternGeneratorView : public CView
 {
 
@@ -23,6 +24,7 @@ class CPatternGeneratorView : public CView
 	int m_iCounter, x, y;
 	double x1, y1, x2, y2, x3, y3;
 	double m_angleSaturn = 0.0;
+
 
 protected: // create from serialization only
 	CPatternGeneratorView() noexcept;

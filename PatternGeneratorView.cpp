@@ -104,11 +104,18 @@ void CPatternGeneratorView::OnDraw(CDC* pDC)
     pDC->Ellipse(150, 50, 450, 350);
 	pDC->SelectObject(pOldPen);
 
-	// saturn circular orbit yellow
+	// saturn Red planet with yellow ring
 	CPen yellowPen(PS_SOLID, 2, RGB(255, 255, 0));
     pOldPen = pDC->SelectObject(&yellowPen);
 	pDC->Ellipse(100, 0, 500, 400); 
 	pDC->SelectObject(pOldPen);
+
+	CPen penYellow(PS_SOLID, 3, RGB(255, 255, 0));
+	CPen* pOldPen4 = pDC->SelectObject(&penYellow);
+	CBrush* pOldBrush5 = (CBrush*)pDC->SelectStockObject(NULL_BRUSH); //ring outline
+	pDC->SelectObject(pOldBrush5);
+	pDC->Ellipse(x2 - 30, y2 - 10, x2 + 30, y2 + 10);
+	pDC->SelectObject(pOldPen4);
 
 	//restore original brush
 	pDC->SelectObject(pOldBrush);
@@ -129,7 +136,7 @@ void CPatternGeneratorView::OnDraw(CDC* pDC)
 	pDC->SelectObject(pO3dBrush);
 	
 	//Saturn(Blue)
-	CBrush brushSaturn(RGB(0, 0, 255));
+	CBrush brushSaturn(RGB(255, 0, 0));
 	CBrush* pOldBrush4 = pDC->SelectObject(&brushSaturn);
 	pDC->Ellipse(x2 - 20, y2 - 20, x2 + 20, y2 + 20);
 	pDC->SelectObject(pOldBrush4);
@@ -239,7 +246,7 @@ UINT CPatternGeneratorView::StartThread(LPVOID Param)
 
 
 		pView->Invalidate();
-		Sleep(80);
+		Sleep(150);
 	}
 	return 0;
 }
